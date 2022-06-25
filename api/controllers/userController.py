@@ -86,7 +86,7 @@ def login(request):
                     "error": "400",
                 },
                 status=400,
-            )
+            ) 
         try:
             user = (
                 User.objects.get(username=username)
@@ -100,7 +100,7 @@ def login(request):
                 status=404,
             )
 
-        if user.password != hashlib.sha256(password.encode("utf-8")).hexdigest():
+        if not user.checkPassword(password):
             return JsonResponse(
                 {"success": False, "message": "Invalid password", "error": "401"},
                 status=401,

@@ -1,5 +1,7 @@
 from django.db import models
 
+import hashlib
+
 # Create your models here.
 
 class User(models.Model):
